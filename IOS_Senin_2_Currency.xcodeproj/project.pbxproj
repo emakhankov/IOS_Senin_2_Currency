@@ -13,6 +13,8 @@
 		B18F2DE225A779AF00D3F7B4 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B18F2DE025A779AF00D3F7B4 /* Main.storyboard */; };
 		B18F2DE425A779AF00D3F7B4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B18F2DE325A779AF00D3F7B4 /* Assets.xcassets */; };
 		B18F2DE725A779AF00D3F7B4 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B18F2DE525A779AF00D3F7B4 /* LaunchScreen.storyboard */; };
+		B18F2DF425A77B2B00D3F7B4 /* data.xml in Resources */ = {isa = PBXBuildFile; fileRef = B18F2DF325A77B2B00D3F7B4 /* data.xml */; };
+		B18F2DF825A77B7C00D3F7B4 /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = B18F2DF725A77B7C00D3F7B4 /* Model.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +26,8 @@
 		B18F2DE325A779AF00D3F7B4 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		B18F2DE625A779AF00D3F7B4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		B18F2DE825A779AF00D3F7B4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		B18F2DF325A77B2B00D3F7B4 /* data.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = data.xml; sourceTree = "<group>"; };
+		B18F2DF725A77B7C00D3F7B4 /* Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -62,7 +66,9 @@
 				B18F2DE025A779AF00D3F7B4 /* Main.storyboard */,
 				B18F2DE325A779AF00D3F7B4 /* Assets.xcassets */,
 				B18F2DE525A779AF00D3F7B4 /* LaunchScreen.storyboard */,
+				B18F2DF325A77B2B00D3F7B4 /* data.xml */,
 				B18F2DE825A779AF00D3F7B4 /* Info.plist */,
+				B18F2DF725A77B7C00D3F7B4 /* Model.swift */,
 			);
 			path = IOS_Senin_2_Currency;
 			sourceTree = "<group>";
@@ -125,6 +131,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				B18F2DE725A779AF00D3F7B4 /* LaunchScreen.storyboard in Resources */,
+				B18F2DF425A77B2B00D3F7B4 /* data.xml in Resources */,
 				B18F2DE425A779AF00D3F7B4 /* Assets.xcassets in Resources */,
 				B18F2DE225A779AF00D3F7B4 /* Main.storyboard in Resources */,
 			);
@@ -140,6 +147,7 @@
 				B18F2DDF25A779AF00D3F7B4 /* ViewController.swift in Sources */,
 				B18F2DDB25A779AF00D3F7B4 /* AppDelegate.swift in Sources */,
 				B18F2DDD25A779AF00D3F7B4 /* SceneDelegate.swift in Sources */,
+				B18F2DF825A77B7C00D3F7B4 /* Model.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
