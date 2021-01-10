@@ -27,6 +27,7 @@ class Model: NSObject, XMLParserDelegate {
     static let shared = Model();
     
     var currencies: [Currency] = [];
+    var currentDate: Date = Date()
     
     var pathForXML: String {
         let path = NSSearchPathForDirectoriesInDomains(FileManager.SearchPathDirectory.libraryDirectory, FileManager.SearchPathDomainMask.userDomainMask, true)[0]+"/data.xml";
@@ -42,12 +43,46 @@ class Model: NSObject, XMLParserDelegate {
         return URL(fileURLWithPath: pathForXML);
     }
     //Загрузка с сайта центробанка
-    func loadXMLFile(data: Data) {
+    //http://www.cbr.ru/scripts/XML_daily.asp?date_req=02/03/2002
+    func loadXMLFile(date: Date?) {
+        
+        var strUrl = "http://www.cbr.ru/scripts/XML_daily.asp?date_req=";
+        
+        if date != nil {
+            let dateFormater = DateFormatter();
+            dateFormater.dateFormat = "dd/MM/yyyy";
+            strUrl = strUrl + dateFormater.string(from: date!);
+        }
+        
+        
+        let url = URL(string: strUrl);
+        
+        let task = URLSession.shared.dataTask(with: url!) { (data, response, error) in
+            
+            if error == nil {
+                let urlForSave = self.urlForXML;
+                
+                do {
+                    try data?.write(to: urlForSave);
+                }
+                catch {
+                    print("Error when save data:\(error.localizedDescription)");
+                }
+            }
+            else
+            {
+                print("error when loadXMLFile" + error!.localizedDescription);
+            }
+        }
+        task.resume();
+        
     }
     
     //Распарсить XML и сохранить его в массив Currencies
     //также отправить уведомления приложению что у нас есть новые данные
     func parseXML() {
+        
+        currencies = []
         
         let parser = XMLParser(contentsOf: urlForXML)
         parser?.delegate = self;
@@ -59,6 +94,30 @@ class Model: NSObject, XMLParserDelegate {
     
     func parser(_ parser: XMLParser, didStartElement elementName: String, namespaceURI: String?, qualifiedName qName: String?, attributes attributeDict: [String : String] = [:]) {
     
+        if elementName == "ValCurs" {
+            
+            if let currentDateString = attributeDict["Date"] {
+                let df = DateFormatter();
+                df.dateFormat = "dd.MM.yyyy";
+                currentDate = df.date(from: currentDateString)!
+            }
+        }
+        
+        if elementName == "Valute" {
+            currentCurrency = Currency();
+        }
+        
+    }
+    
+    var currentCharacters: String = "";
+    func parser(_ parser: XMLParser, foundCharacters string: String) {
+        currentCharacters = string;
+    }
+    
+    
+    func parser(_ parser: XMLParser, didEndElement elementName: String, namespaceURI: String?, qualifiedName qName: String?) {
+        
+        
         if elementName=="NumCode" {
             currentCurrency?.NumCode = currentCharacters;
         }
@@ -77,20 +136,14 @@ class Model: NSObject, XMLParserDelegate {
             currentCurrency?.valueDouble = Double(currentCharacters.replacingOccurrences(of: ",", with: "."));
         }
 
+        
         if elementName == "Valute" {
-            currentCurrency = Currency();
+            currencies.append(currentCurrency!);
         }
-    }
-    
-    func parser(_ parser: XMLParser, didEndElement elementName: String, namespaceURI: String?, qualifiedName qName: String?) {
         
-        currencies.append(currentCurrency!);
         
     }
     
-    var currentCharacters: String = "";
-    func parser(_ parser: XMLParser, foundCharacters string: String) {
-        currentCharacters = string;
-    }
+
     
 }

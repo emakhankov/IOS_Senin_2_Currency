@@ -17,6 +17,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         
         // Вот тут можно впендюрить  вызов чего то при загрузке
+        Model.shared.loadXMLFile(date: nil);
+        Model.shared.parseXML();
+        
         
         return true
     }
