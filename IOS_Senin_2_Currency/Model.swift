@@ -27,7 +27,8 @@ class Model: NSObject, XMLParserDelegate {
     static let shared = Model();
     
     var currencies: [Currency] = [];
-    var currentDate: Date = Date()
+    //var currentDate: Date = Date()
+    var currentDate: String = ""
     
     var pathForXML: String {
         let path = NSSearchPathForDirectoriesInDomains(FileManager.SearchPathDirectory.libraryDirectory, FileManager.SearchPathDomainMask.userDomainMask, true)[0]+"/data.xml";
@@ -64,6 +65,8 @@ class Model: NSObject, XMLParserDelegate {
                 
                 do {
                     try data?.write(to: urlForSave);
+                    print("Файл загружен");
+                    self.parseXML();
                 }
                 catch {
                     print("Error when save data:\(error.localizedDescription)");
@@ -87,6 +90,10 @@ class Model: NSObject, XMLParserDelegate {
         let parser = XMLParser(contentsOf: urlForXML)
         parser?.delegate = self;
         parser?.parse();
+        
+        print("Данные обновлены");
+        
+        NotificationCenter.default.post(name: NSNotification.Name(rawValue: "dataRefreshed"), object: self)
     }
     
     
@@ -97,9 +104,10 @@ class Model: NSObject, XMLParserDelegate {
         if elementName == "ValCurs" {
             
             if let currentDateString = attributeDict["Date"] {
-                let df = DateFormatter();
-                df.dateFormat = "dd.MM.yyyy";
-                currentDate = df.date(from: currentDateString)!
+                currentDate = currentDateString
+                //let df = DateFormatter();
+                //df.dateFormat = "dd.MM.yyyy";
+                //currentDate = df.date(from: currentDateString)!
             }
         }
         

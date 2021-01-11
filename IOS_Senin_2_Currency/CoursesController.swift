@@ -12,10 +12,17 @@ class CoursesControllerController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        let df = DateFormatter();
-        df.dateFormat = "dd.MM.yyyy";
+        NotificationCenter.default.addObserver(forName: NSNotification.Name(rawValue: "dataRefreshed"), object: nil, queue: nil) { (Notification) in
+            self.tableView.reloadData();
+            self.navigationItem.title =  Model.shared.currentDate;
+        }
         
-        navigationItem.title = df.string(from: Model.shared.currentDate);
+        //let df = DateFormatter();
+        //df.dateFormat = "dd.MM.yyyy";
+        //navigationItem.title = df.string(from: Model.shared.currentDate);
+        navigationItem.title =  Model.shared.currentDate;
+        
+        
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
 
