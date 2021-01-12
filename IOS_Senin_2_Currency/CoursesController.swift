@@ -9,12 +9,39 @@ import UIKit
 
 class CoursesControllerController: UITableViewController {
 
+    @IBAction func pushRefreshAction(_ sender: Any) {
+        Model.shared.loadXMLFile(date: nil);
+    }
+
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        
+        NotificationCenter.default.addObserver(forName: NSNotification.Name(rawValue: "startLoadingXML"), object: nil, queue: nil) { (Notification) in
+            
+            DispatchQueue.main.async {
+                
+                let activityIndicator = UIActivityIndicatorView(style: UIActivityIndicatorView.Style.medium);
+                activityIndicator.startAnimating()
+                
+                self.navigationItem.rightBarButtonItem?.customView = activityIndicator;
+                
+            }
+           
+        }
+        
         NotificationCenter.default.addObserver(forName: NSNotification.Name(rawValue: "dataRefreshed"), object: nil, queue: nil) { (Notification) in
-            self.tableView.reloadData();
-            self.navigationItem.title =  Model.shared.currentDate;
+            
+            DispatchQueue.main.async {
+                
+                self.tableView.reloadData();
+                self.navigationItem.title =  Model.shared.currentDate;
+                
+                
+                let barButtonItem = UIBarButtonItem(barButtonSystemItem: UIBarButtonItem.SystemItem.refresh, target: self, action: #selector(self.pushRefreshAction(_:)))
+                self.navigationItem.rightBarButtonItem = barButtonItem;
+            }
+           
         }
         
         //let df = DateFormatter();
@@ -22,6 +49,7 @@ class CoursesControllerController: UITableViewController {
         //navigationItem.title = df.string(from: Model.shared.currentDate);
         navigationItem.title =  Model.shared.currentDate;
         
+        Model.shared.loadXMLFile(date: nil);
         
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false

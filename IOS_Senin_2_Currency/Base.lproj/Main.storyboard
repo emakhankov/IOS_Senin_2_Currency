@@ -87,7 +87,11 @@
                                 <segue destination="pOK-9S-rmt" kind="presentation" id="MAU-Jv-7dE"/>
                             </connections>
                         </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" systemItem="refresh" id="b0d-Yv-Kne"/>
+                        <barButtonItem key="rightBarButtonItem" systemItem="refresh" id="b0d-Yv-Kne">
+                            <connections>
+                                <action selector="pushRefreshAction:" destination="JrK-Df-kIp" id="DML-4e-eZ0"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                 </tableViewController>
@@ -95,10 +99,10 @@
             </objects>
             <point key="canvasLocation" x="1718.840579710145" y="-274.55357142857139"/>
         </scene>
-        <!--View Controller-->
+        <!--Выберите дату-->
         <scene sceneID="1TK-Si-Ppu">
             <objects>
-                <viewController id="bT4-37-UML" sceneMemberID="viewController">
+                <viewController id="bT4-37-UML" customClass="SettingsController" customModule="IOS_Senin_2_Currency" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="y4d-xm-jMC">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -111,6 +115,9 @@
                                 <rect key="frame" x="20" y="482" width="374" height="41"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="24"/>
                                 <state key="normal" title="Показать курсы"/>
+                                <connections>
+                                    <action selector="pushShowCources:" destination="bT4-37-UML" eventType="touchUpInside" id="xhT-hp-LSF"/>
+                                </connections>
                             </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="sgx-oH-rws"/>
@@ -124,9 +131,16 @@
                             <constraint firstItem="sgx-oH-rws" firstAttribute="trailing" secondItem="BdP-SD-4A7" secondAttribute="trailing" constant="20" id="v1j-Kw-Vlf"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="17a-Ag-Bt0">
-                        <barButtonItem key="leftBarButtonItem" title="Отмена" id="UQA-Y6-pZq"/>
+                    <navigationItem key="navigationItem" title="Выберите дату" id="17a-Ag-Bt0">
+                        <barButtonItem key="leftBarButtonItem" title="Отмена" id="UQA-Y6-pZq">
+                            <connections>
+                                <action selector="pushCancelAction:" destination="bT4-37-UML" id="yw8-YK-woX"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <outlet property="datePicker" destination="ja9-ak-uri" id="i12-Pf-2NQ"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="if4-0D-Sms" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>

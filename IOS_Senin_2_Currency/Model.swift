@@ -77,6 +77,8 @@ class Model: NSObject, XMLParserDelegate {
                 print("error when loadXMLFile" + error!.localizedDescription);
             }
         }
+        
+        NotificationCenter.default.post(name: NSNotification.Name(rawValue: "startLoadingXML"), object: self);
         task.resume();
         
     }
@@ -93,7 +95,7 @@ class Model: NSObject, XMLParserDelegate {
         
         print("Данные обновлены");
         
-        NotificationCenter.default.post(name: NSNotification.Name(rawValue: "dataRefreshed"), object: self)
+        NotificationCenter.default.post(name: NSNotification.Name(rawValue: "dataRefreshed"), object: self);
     }
     
     
