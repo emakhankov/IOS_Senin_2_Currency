@@ -19,6 +19,18 @@ class Currency
     
     var Value: String?
     var valueDouble: Double?
+    
+    class func rouble() -> Currency {
+        let r = Currency()
+        r.CharCode = "RUR"
+        r.Name = "Российский рубль";
+        r.Nominal = "1"
+        r.nominalDouble = 1
+        r.Value = "1"
+        r.valueDouble = 1
+        
+        return r;
+    }
 }
 
 
@@ -29,6 +41,19 @@ class Model: NSObject, XMLParserDelegate {
     var currencies: [Currency] = [];
     //var currentDate: Date = Date()
     var currentDate: String = ""
+    
+    
+    var fromCurrency: Currency = Currency.rouble();
+    var toCurrency: Currency = Currency.rouble();
+    
+    func convert(amount: Double?) -> String {
+        if amount == nil {
+            return "";
+        }
+        let d = (fromCurrency.nominalDouble! * fromCurrency.valueDouble!) / (toCurrency.nominalDouble! * toCurrency.valueDouble!) * amount!;
+        
+        return String(d);
+    }
     
     var pathForXML: String {
         let path = NSSearchPathForDirectoriesInDomains(FileManager.SearchPathDirectory.libraryDirectory, FileManager.SearchPathDomainMask.userDomainMask, true)[0]+"/data.xml";
@@ -60,6 +85,8 @@ class Model: NSObject, XMLParserDelegate {
         
         let task = URLSession.shared.dataTask(with: url!) { (data, response, error) in
             
+            var errorGlobal: String?
+            
             if error == nil {
                 let urlForSave = self.urlForXML;
                 
@@ -70,11 +97,18 @@ class Model: NSObject, XMLParserDelegate {
                 }
                 catch {
                     print("Error when save data:\(error.localizedDescription)");
+                    errorGlobal = error.localizedDescription;
                 }
             }
             else
             {
                 print("error when loadXMLFile" + error!.localizedDescription);
+                errorGlobal = error!.localizedDescription;
+            }
+            
+            if let errorGlobal = errorGlobal
+            {
+                NotificationCenter.default.post(name: Notification.Name("ErrorWhenXMLloading"), object: self, userInfo: ["ErrorName": errorGlobal])
             }
         }
         
@@ -87,7 +121,7 @@ class Model: NSObject, XMLParserDelegate {
     //также отправить уведомления приложению что у нас есть новые данные
     func parseXML() {
         
-        currencies = []
+        currencies = [Currency.rouble()]
         
         let parser = XMLParser(contentsOf: urlForXML)
         parser?.delegate = self;

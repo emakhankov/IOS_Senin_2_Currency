@@ -22,6 +22,9 @@ class CoursesControllerController: UITableViewController {
             DispatchQueue.main.async {
                 
                 let activityIndicator = UIActivityIndicatorView(style: UIActivityIndicatorView.Style.medium);
+                
+                activityIndicator.color = .red;
+                
                 activityIndicator.startAnimating()
                 
                 self.navigationItem.rightBarButtonItem?.customView = activityIndicator;
@@ -42,6 +45,21 @@ class CoursesControllerController: UITableViewController {
                 self.navigationItem.rightBarButtonItem = barButtonItem;
             }
            
+        }
+        
+        NotificationCenter.default.addObserver(forName: NSNotification.Name(rawValue: "ErrorWhenXMLloading"), object: nil, queue: nil) { (Notification) in
+            
+            DispatchQueue.main.async {
+                
+                let barButtonItem = UIBarButtonItem(barButtonSystemItem: UIBarButtonItem.SystemItem.refresh, target: self, action: #selector(self.pushRefreshAction(_:)))
+                self.navigationItem.rightBarButtonItem = barButtonItem;
+                
+                
+                let errorName = Notification.userInfo?["ErrorName"] as! String;
+                print(errorName);
+                let alert = UIAlertController(title: "Добавить элемент", message: errorName, preferredStyle: UIAlertController.Style.alert);
+                self.present(alert, animated: true, completion: nil);
+            }
         }
         
         //let df = DateFormatter();

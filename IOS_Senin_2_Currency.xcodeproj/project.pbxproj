@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		B11546E925AB5ED500982BDD /* CoursesController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B11546E825AB5ED500982BDD /* CoursesController.swift */; };
+		B1483B6825AF79A6008AA2F5 /* ConverterController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1483B6725AF79A6008AA2F5 /* ConverterController.swift */; };
 		B14F5C7625AE1A3B009D5932 /* SettingsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B14F5C7525AE1A3B009D5932 /* SettingsController.swift */; };
 		B18F2DDB25A779AF00D3F7B4 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B18F2DDA25A779AF00D3F7B4 /* AppDelegate.swift */; };
 		B18F2DDD25A779AF00D3F7B4 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B18F2DDC25A779AF00D3F7B4 /* SceneDelegate.swift */; };
@@ -20,6 +21,7 @@
 
 /* Begin PBXFileReference section */
 		B11546E825AB5ED500982BDD /* CoursesController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoursesController.swift; sourceTree = "<group>"; };
+		B1483B6725AF79A6008AA2F5 /* ConverterController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConverterController.swift; sourceTree = "<group>"; };
 		B14F5C7525AE1A3B009D5932 /* SettingsController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsController.swift; sourceTree = "<group>"; };
 		B18F2DD725A779AF00D3F7B4 /* IOS_Senin_2_Currency.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = IOS_Senin_2_Currency.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B18F2DDA25A779AF00D3F7B4 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -72,6 +74,7 @@
 				B18F2DF325A77B2B00D3F7B4 /* data.xml */,
 				B18F2DE825A779AF00D3F7B4 /* Info.plist */,
 				B14F5C7525AE1A3B009D5932 /* SettingsController.swift */,
+				B1483B6725AF79A6008AA2F5 /* ConverterController.swift */,
 			);
 			path = IOS_Senin_2_Currency;
 			sourceTree = "<group>";
@@ -151,6 +154,7 @@
 				B14F5C7625AE1A3B009D5932 /* SettingsController.swift in Sources */,
 				B18F2DDB25A779AF00D3F7B4 /* AppDelegate.swift in Sources */,
 				B18F2DDD25A779AF00D3F7B4 /* SceneDelegate.swift in Sources */,
+				B1483B6825AF79A6008AA2F5 /* ConverterController.swift in Sources */,
 				B18F2DF825A77B7C00D3F7B4 /* Model.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

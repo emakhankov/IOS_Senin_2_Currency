@@ -29,18 +29,87 @@
         <!--Конвертор-->
         <scene sceneID="Rht-04-Mlr">
             <objects>
-                <viewController id="b17-9x-xxP" sceneMemberID="viewController">
+                <viewController id="b17-9x-xxP" customClass="ConverterController" customModule="IOS_Senin_2_Currency" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="cbr-Cd-aFi">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ltk-LD-W3f">
+                                <rect key="frame" x="56" y="168" width="47" height="41"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="24"/>
+                                <state key="normal" title="RUR"/>
+                                <connections>
+                                    <action selector="pushFromAction:" destination="b17-9x-xxP" eventType="touchUpInside" id="9sj-2J-YWP"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Muv-Hd-aVL">
+                                <rect key="frame" x="328" y="168" width="47" height="41"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="24"/>
+                                <state key="normal" title="RUR"/>
+                                <connections>
+                                    <action selector="pushToAction:" destination="b17-9x-xxP" eventType="touchUpInside" id="PPt-Pm-h7a"/>
+                                </connections>
+                            </button>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="K7Z-Qa-TYq">
+                                <rect key="frame" x="56" y="247" width="97" height="34"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="97" id="nH8-aV-W0c"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                                <connections>
+                                    <action selector="textFromEditingChange:" destination="b17-9x-xxP" eventType="editingChanged" id="hiL-wv-Fba"/>
+                                </connections>
+                            </textField>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="VHr-tQ-uVT">
+                                <rect key="frame" x="278" y="247" width="97" height="34"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="97" id="8mL-Fh-rVD"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="=" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ICA-ZE-neB">
+                                <rect key="frame" x="198.5" y="248" width="17" height="33"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="27"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Курсы за дату:" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nGL-ae-Udh">
+                                <rect key="frame" x="56" y="115" width="319" height="23"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="19"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
                         <viewLayoutGuide key="safeArea" id="nyk-mf-3Ct"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="K7Z-Qa-TYq" firstAttribute="leading" secondItem="nyk-mf-3Ct" secondAttribute="leading" constant="56" id="1JH-S2-gfi"/>
+                            <constraint firstItem="ltk-LD-W3f" firstAttribute="top" secondItem="nyk-mf-3Ct" secondAttribute="top" constant="80" id="8nC-0K-w1A"/>
+                            <constraint firstItem="K7Z-Qa-TYq" firstAttribute="top" secondItem="ltk-LD-W3f" secondAttribute="bottom" constant="38" id="C7k-Fe-tSK"/>
+                            <constraint firstItem="nyk-mf-3Ct" firstAttribute="trailing" secondItem="VHr-tQ-uVT" secondAttribute="trailing" constant="39" id="FfK-LG-nlU"/>
+                            <constraint firstItem="Muv-Hd-aVL" firstAttribute="top" secondItem="nyk-mf-3Ct" secondAttribute="top" constant="80" id="Ghu-DF-EFX"/>
+                            <constraint firstItem="ICA-ZE-neB" firstAttribute="top" secondItem="nyk-mf-3Ct" secondAttribute="top" constant="160" id="Pzs-xx-8tS"/>
+                            <constraint firstItem="nyk-mf-3Ct" firstAttribute="trailing" secondItem="Muv-Hd-aVL" secondAttribute="trailing" constant="39" id="pXK-Sg-Sev"/>
+                            <constraint firstItem="ltk-LD-W3f" firstAttribute="leading" secondItem="nyk-mf-3Ct" secondAttribute="leading" constant="56" id="qS9-P0-SsX"/>
+                            <constraint firstItem="VHr-tQ-uVT" firstAttribute="top" secondItem="Muv-Hd-aVL" secondAttribute="bottom" constant="38" id="vf0-jq-JYE"/>
+                            <constraint firstItem="ICA-ZE-neB" firstAttribute="centerX" secondItem="cbr-Cd-aFi" secondAttribute="centerX" id="yOL-p1-5gZ"/>
+                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Конвертор" id="wus-hp-hjv"/>
+                    <connections>
+                        <outlet property="buttonFrom" destination="ltk-LD-W3f" id="gqF-tT-23V"/>
+                        <outlet property="buttonTo" destination="Muv-Hd-aVL" id="zcu-5c-rO5"/>
+                        <outlet property="labelCourserForDate" destination="nGL-ae-Udh" id="Nj1-38-8RO"/>
+                        <outlet property="textFrom" destination="K7Z-Qa-TYq" id="8G3-9C-ghk"/>
+                        <outlet property="textTo" destination="VHr-tQ-uVT" id="umX-Xo-SkG"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="mHT-ZD-H51" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1670" y="370"/>
+            <point key="canvasLocation" x="1669.5652173913045" y="369.64285714285711"/>
         </scene>
         <!--Курсы-->
         <scene sceneID="fBC-JE-NAW">
