@@ -65,6 +65,7 @@ class ConverterController: UIViewController {
         refreshButtons();
         textFromEditingChange(self);
         navigationItem.rightBarButtonItem = nil;
+        labelCourserForDate.text = "Курсы за дату: \(Model.shared.currentDate)";
     }
     func refreshButtons() {
         buttonFrom.setTitle(Model.shared.fromCurrency.CharCode, for: UIControl.State.normal)

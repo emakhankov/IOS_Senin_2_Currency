@@ -20,6 +20,23 @@ class Currency
     var Value: String?
     var valueDouble: Double?
     
+    
+    var imageFlag: UIImage? {
+        if let CharCode = CharCode {
+            //print(CharCode)
+            
+            if let filepath = Bundle.main.path(forResource: CharCode, ofType: "png", inDirectory: "flagsImages")
+            {
+                print(filepath)
+                return UIImage(named: filepath);
+            }
+            return nil
+            //return UIImage(named: CharCode + ".png")  // Так нихрена не заработало
+        }
+        
+        return nil;
+    }
+    
     class func rouble() -> Currency {
         let r = Currency()
         r.CharCode = "RUR"
@@ -130,6 +147,16 @@ class Model: NSObject, XMLParserDelegate {
         print("Данные обновлены");
         
         NotificationCenter.default.post(name: NSNotification.Name(rawValue: "dataRefreshed"), object: self);
+        
+        for c in currencies {
+            if c.CharCode == fromCurrency.CharCode {
+                fromCurrency = c
+            }
+            
+            if c.CharCode == toCurrency.CharCode {
+                toCurrency = c
+            }
+        }
     }
     
     
