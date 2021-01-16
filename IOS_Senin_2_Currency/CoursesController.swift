@@ -67,13 +67,17 @@ class CoursesControllerController: UITableViewController {
         //navigationItem.title = df.string(from: Model.shared.currentDate);
         navigationItem.title =  Model.shared.currentDate;
         
-        Model.shared.loadXMLFile(date: nil);
+        
         
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
 
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        Model.shared.loadXMLFile(date: nil); // лучше вынести сюда пусть парсит когда появляеся экран и не нарвемся вдруг на пустой массив (из отдельного потока)
     }
 
     // MARK: - Table view data source

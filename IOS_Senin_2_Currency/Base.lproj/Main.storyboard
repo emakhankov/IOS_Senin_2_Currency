@@ -252,11 +252,11 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="date" style="wheels" translatesAutoresizingMaskIntoConstraints="NO" id="ja9-ak-uri">
-                                <rect key="frame" x="0.0" y="258" width="414" height="216"/>
+                                <rect key="frame" x="0.0" y="98" width="414" height="216"/>
                                 <locale key="locale" localeIdentifier="ru"/>
                             </datePicker>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BdP-SD-4A7">
-                                <rect key="frame" x="20" y="514" width="374" height="41"/>
+                                <rect key="frame" x="20" y="334" width="374" height="41"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="24"/>
                                 <state key="normal" title="Показать курсы"/>
                                 <connections>
@@ -268,10 +268,10 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="ja9-ak-uri" firstAttribute="trailing" secondItem="sgx-oH-rws" secondAttribute="trailing" id="3ue-5Q-UAl"/>
-                            <constraint firstItem="ja9-ak-uri" firstAttribute="top" secondItem="sgx-oH-rws" secondAttribute="top" constant="170" id="5ZN-Ya-JBO"/>
+                            <constraint firstItem="ja9-ak-uri" firstAttribute="top" secondItem="sgx-oH-rws" secondAttribute="top" constant="10" id="5ZN-Ya-JBO"/>
                             <constraint firstItem="ja9-ak-uri" firstAttribute="leading" secondItem="sgx-oH-rws" secondAttribute="leading" id="ETZ-Fz-wsN"/>
                             <constraint firstItem="BdP-SD-4A7" firstAttribute="leading" secondItem="sgx-oH-rws" secondAttribute="leading" constant="20" id="g4j-H5-Oxd"/>
-                            <constraint firstItem="BdP-SD-4A7" firstAttribute="top" secondItem="ja9-ak-uri" secondAttribute="bottom" constant="40" id="ibz-kY-S2r"/>
+                            <constraint firstItem="BdP-SD-4A7" firstAttribute="top" secondItem="ja9-ak-uri" secondAttribute="bottom" constant="20" id="ibz-kY-S2r"/>
                             <constraint firstItem="sgx-oH-rws" firstAttribute="trailing" secondItem="BdP-SD-4A7" secondAttribute="trailing" constant="20" id="v1j-Kw-Vlf"/>
                         </constraints>
                     </view>
@@ -294,11 +294,12 @@
         <scene sceneID="V8L-gj-OBq">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="ORl-2I-HbR" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Курсы" id="PL2-uH-8e9"/>
+                    <tabBarItem key="tabBarItem" title="Курсы" image="tab1" id="PL2-uH-8e9"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="Oqk-Gb-Zal">
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <color key="backgroundColor" red="0.124773491" green="0.73599173279999996" blue="0.92084997889999998" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
@@ -313,11 +314,12 @@
         <scene sceneID="qzc-un-uh3">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="GBU-P7-YGK" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Конвертор" id="Saa-7i-NA6"/>
+                    <tabBarItem key="tabBarItem" title="Конвертор" image="tab2" id="Saa-7i-NA6"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="nhj-8q-2Tg">
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <color key="backgroundColor" red="0.124773491" green="0.73599173279999996" blue="0.92084997889999998" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
@@ -349,6 +351,8 @@
         </scene>
     </scenes>
     <resources>
+        <image name="tab1" width="25" height="25"/>
+        <image name="tab2" width="25" height="25"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
